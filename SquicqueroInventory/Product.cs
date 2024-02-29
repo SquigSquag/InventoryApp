@@ -10,62 +10,85 @@ namespace SquicqueroInventory
 {
     public class Product
     {
-        private long ID;
-        private string Name;
-        private double Price;
-        private int Inventory;
-        public BindingList<Part> RelatedParts = new BindingList<Part>();
+        public int ProductID { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int InStock { get; set; }
+        public int Min { get; set; }
+        public int Max { get; set; }
+        public BindingList<Part> AssociatedParts = new BindingList<Part>();
 
-        public Product(int id, string name,  double price, int inventory) {
-        this.ID = id;
-        this.Name = name;
-        this.Price = price;
-        this.Inventory = inventory;
-        
-        }
 
-        public long getID()
-        {
-            return this.ID;
-        }
-        public void setID(int id)
-        {
-            this.ID = id;
-        }
 
-        public string getName()
-        {
-            return this.Name;
-        }
+        public Product() { }
 
-        public void setName(string name)
+        public Product(int id, string name, decimal price, int inventory, int min, int max,BindingList<Part> temppart)
         {
+            this.ProductID = id;
             this.Name = name;
-        }
-
-        public double getPrice()
-        {
-            return this.Price;
-        }
-        public void setPrice(double price)
-        {
             this.Price = price;
+            this.InStock = inventory;
+            this.Min = min;
+            this.Max = max;
+            AssociatedParts.AllowRemove = true;
+            AssociatedParts.AllowNew = true;
+            foreach (Part part in temppart) {
+                addAssociatedPart(part);
+            }
         }
-        public int getInventory()
+        public Product(int id, string name, decimal price, int inventory, int min, int max)
         {
-            return this.Inventory;
+            this.ProductID = id;
+            this.Name = name;
+            this.Price = price;
+            this.InStock = inventory;
+            this.Min = min;
+            this.Max = max;
+            AssociatedParts.AllowRemove = true;
+            AssociatedParts.AllowNew = true;
         }
 
-        public void setInventory(int inventory)
+        public void addAssociatedPart(Part thing)
         {
-            this.Inventory = inventory;
+            try {AssociatedParts.Add(thing);}
+            catch (Exception e)
+            {
+                string msg = e.Message;
+                MessageBox.Show(msg);
+
+            }
+
         }
 
-        public BindingList<Part> getParts()
-        {
-            return this.RelatedParts;
+
+
+        public bool removeAssociatedPart(int thing) {
+
+            foreach (Part part in AssociatedParts) {
+                if (part.PartID == thing) {
+                    AssociatedParts.Remove(part);
+                    return true;
+
+                }
+            }
+            string msg = "Part does not exist";
+            MessageBox.Show(msg);
+            return false;
         }
+    
 
+        public Part lookupAssociatedPart(int thing) {
 
+        foreach (Part part in AssociatedParts) {
+            if (part.PartID == thing){
+                return part;
+            }
+        }
+        Part defaultpart = new Outsourced();
+        return defaultpart;
+        }
     }
 }
+ 
+
+

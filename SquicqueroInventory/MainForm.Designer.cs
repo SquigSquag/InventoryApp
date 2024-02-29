@@ -28,20 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column9 = new DataGridViewTextBoxColumn();
-            Column10 = new DataGridViewTextBoxColumn();
-            dataGridView2 = new DataGridView();
-            Column5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
-            Column8 = new DataGridViewTextBoxColumn();
+            components = new System.ComponentModel.Container();
+            PART_GRID_VIEW = new DataGridView();
             label1 = new Label();
             label2 = new Label();
             button1 = new Button();
@@ -49,97 +37,31 @@
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             button3 = new Button();
-            button4 = new Button();
+            Main_Form_Add_Prod_Butt = new Button();
             button5 = new Button();
             button6 = new Button();
             button7 = new Button();
             button8 = new Button();
             button9 = new Button();
             label3 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            inventoryBindingSource = new BindingSource(components);
+            PROD_GRID_VIEW = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)PART_GRID_VIEW).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)inventoryBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PROD_GRID_VIEW).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // PART_GRID_VIEW
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column9, Column10 });
-            dataGridView1.Location = new Point(57, 119);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(603, 222);
-            dataGridView1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Part ID";
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Name";
-            Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Inventory";
-            Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Price";
-            Column4.Name = "Column4";
-            // 
-            // Column9
-            // 
-            Column9.HeaderText = "Min";
-            Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            Column10.HeaderText = "Max";
-            Column10.Name = "Column10";
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Column5, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, Column6, Column7, Column8 });
-            dataGridView2.Location = new Point(811, 119);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersVisible = false;
-            dataGridView2.Size = new Size(604, 222);
-            dataGridView2.TabIndex = 1;
-            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Product ID";
-            Column5.Name = "Column5";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Name";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Inventory";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Price";
-            Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Min";
-            Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            Column8.HeaderText = "Max";
-            Column8.Name = "Column8";
+            PART_GRID_VIEW.AllowUserToAddRows = false;
+            PART_GRID_VIEW.AllowUserToDeleteRows = false;
+            PART_GRID_VIEW.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PART_GRID_VIEW.Location = new Point(57, 119);
+            PART_GRID_VIEW.Name = "PART_GRID_VIEW";
+            PART_GRID_VIEW.RowHeadersVisible = false;
+            PART_GRID_VIEW.Size = new Size(603, 222);
+            PART_GRID_VIEW.TabIndex = 0;
+            PART_GRID_VIEW.CellContentClick += PART_GRID_VIEW_CellContentClick;
             // 
             // label1
             // 
@@ -171,6 +93,7 @@
             button1.TabIndex = 4;
             button1.Text = "Search";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -203,15 +126,17 @@
             button3.TabIndex = 8;
             button3.Text = "Modify";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
-            // button4
+            // Main_Form_Add_Prod_Butt
             // 
-            button4.Location = new Point(1178, 366);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 9;
-            button4.Text = "Add";
-            button4.UseVisualStyleBackColor = true;
+            Main_Form_Add_Prod_Butt.Location = new Point(1178, 366);
+            Main_Form_Add_Prod_Butt.Name = "Main_Form_Add_Prod_Butt";
+            Main_Form_Add_Prod_Butt.Size = new Size(75, 23);
+            Main_Form_Add_Prod_Butt.TabIndex = 9;
+            Main_Form_Add_Prod_Butt.Text = "Add";
+            Main_Form_Add_Prod_Butt.UseVisualStyleBackColor = true;
+            Main_Form_Add_Prod_Butt.Click += button4_Click;
             // 
             // button5
             // 
@@ -221,6 +146,7 @@
             button5.TabIndex = 10;
             button5.Text = "Delete";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
@@ -230,6 +156,7 @@
             button6.TabIndex = 13;
             button6.Text = "Delete";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // button7
             // 
@@ -239,6 +166,7 @@
             button7.TabIndex = 12;
             button7.Text = "Add";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // button8
             // 
@@ -248,6 +176,7 @@
             button8.TabIndex = 11;
             button8.Text = "Modify";
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // button9
             // 
@@ -257,6 +186,7 @@
             button9.TabIndex = 14;
             button9.Text = "Exit";
             button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
             // 
             // label3
             // 
@@ -269,7 +199,23 @@
             label3.Text = "Inventory Management System";
             label3.Click += label3_Click;
             // 
-            // Form1
+            // inventoryBindingSource
+            // 
+            inventoryBindingSource.DataSource = typeof(Inventory);
+            // 
+            // PROD_GRID_VIEW
+            // 
+            PROD_GRID_VIEW.AllowUserToAddRows = false;
+            PROD_GRID_VIEW.AllowUserToDeleteRows = false;
+            PROD_GRID_VIEW.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PROD_GRID_VIEW.Location = new Point(811, 119);
+            PROD_GRID_VIEW.Name = "PROD_GRID_VIEW";
+            PROD_GRID_VIEW.RowHeadersVisible = false;
+            PROD_GRID_VIEW.Size = new Size(604, 222);
+            PROD_GRID_VIEW.TabIndex = 1;
+            PROD_GRID_VIEW.CellContentClick += dataGridView2_CellContentClick;
+            // 
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -280,7 +226,7 @@
             Controls.Add(button7);
             Controls.Add(button8);
             Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(Main_Form_Add_Prod_Butt);
             Controls.Add(button3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
@@ -288,45 +234,36 @@
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(dataGridView2);
-            Controls.Add(dataGridView1);
-            Name = "Form1";
+            Controls.Add(PROD_GRID_VIEW);
+            Controls.Add(PART_GRID_VIEW);
+            Name = "MainForm";
             Text = "Main Screen";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)PART_GRID_VIEW).EndInit();
+            ((System.ComponentModel.ISupportInitialize)inventoryBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PROD_GRID_VIEW).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
+        private DataGridView PART_GRID_VIEW;
         private Label label1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column9;
-        private DataGridViewTextBoxColumn Column10;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column7;
-        private DataGridViewTextBoxColumn Column8;
         private Label label2;
         private Button button1;
         private Button button2;
         private TextBox textBox1;
         private TextBox textBox2;
         private Button button3;
-        private Button button4;
+        private Button Main_Form_Add_Prod_Butt;
         private Button button5;
         private Button button6;
         private Button button7;
         private Button button8;
         private Button button9;
         private Label label3;
+        private BindingSource inventoryBindingSource;
+        private DataGridView PROD_GRID_VIEW;
     }
 }

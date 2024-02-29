@@ -63,6 +63,8 @@
             textBox1 = new TextBox();
             button1 = new Button();
             label1 = new Label();
+            button6 = new Button();
+            textBox8 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -166,7 +168,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(458, 244);
+            label3.Location = new Point(497, 272);
             label3.Name = "label3";
             label3.Size = new Size(184, 15);
             label3.TabIndex = 34;
@@ -175,7 +177,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(458, 17);
+            label2.Location = new Point(497, 20);
             label2.Name = "label2";
             label2.Size = new Size(107, 15);
             label2.TabIndex = 33;
@@ -201,7 +203,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(886, 436);
+            button3.Location = new Point(886, 472);
             button3.Name = "button3";
             button3.Size = new Size(55, 31);
             button3.TabIndex = 30;
@@ -221,9 +223,10 @@
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
-            dataGridView2.Location = new Point(458, 262);
+            dataGridView2.Location = new Point(497, 290);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(483, 168);
+            dataGridView2.RowHeadersVisible = false;
+            dataGridView2.Size = new Size(444, 168);
             dataGridView2.TabIndex = 28;
             // 
             // dataGridViewTextBoxColumn1
@@ -265,9 +268,10 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
-            dataGridView1.Location = new Point(458, 38);
+            dataGridView1.Location = new Point(497, 38);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(483, 168);
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Size = new Size(444, 168);
             dataGridView1.TabIndex = 27;
             // 
             // Column1
@@ -330,11 +334,29 @@
             label1.TabIndex = 24;
             label1.Text = "Modify Product";
             // 
+            // button6
+            // 
+            button6.Location = new Point(687, 261);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 47;
+            button6.Text = "Search";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(768, 262);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(173, 23);
+            textBox8.TabIndex = 48;
+            // 
             // Form5
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(955, 562);
+            Controls.Add(textBox8);
+            Controls.Add(button6);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -403,5 +425,7 @@
         private TextBox textBox1;
         private Button button1;
         private Label label1;
+        private Button button6;
+        private TextBox textBox8;
     }
 }

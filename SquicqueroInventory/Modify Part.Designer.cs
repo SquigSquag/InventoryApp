@@ -57,6 +57,7 @@
             button2.TabIndex = 37;
             button2.Text = "Cancel";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -66,6 +67,7 @@
             button1.TabIndex = 36;
             button1.Text = "Save";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label8
             // 
@@ -165,10 +167,12 @@
             // 
             // textBox1
             // 
+            textBox1.BackColor = SystemColors.ControlLightLight;
             textBox1.Location = new Point(175, 94);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(162, 23);
             textBox1.TabIndex = 23;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 
@@ -198,6 +202,7 @@
             radioButton2.TabStop = true;
             radioButton2.Text = "Outsourced";
             radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
             // 
             // radioButton1
             // 
@@ -209,6 +214,7 @@
             radioButton1.TabStop = true;
             radioButton1.Text = "In-House";
             radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
             // 
             // Form3
             // 

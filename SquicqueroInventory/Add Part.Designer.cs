@@ -59,6 +59,7 @@
             inHouseRadio.TabStop = true;
             inHouseRadio.Text = "In-House";
             inHouseRadio.UseVisualStyleBackColor = true;
+            inHouseRadio.CheckedChanged += inHouseRadio_CheckedChanged;
             // 
             // outsourcedRadio
             // 
@@ -70,6 +71,7 @@
             outsourcedRadio.TabStop = true;
             outsourcedRadio.Text = "Outsourced";
             outsourcedRadio.UseVisualStyleBackColor = true;
+            outsourcedRadio.CheckedChanged += outsourcedRadio_CheckedChanged;
             // 
             // label1
             // 
@@ -92,10 +94,13 @@
             // 
             // textBox1
             // 
+            textBox1.BackColor = SystemColors.ScrollBar;
             textBox1.Location = new Point(169, 101);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(162, 23);
             textBox1.TabIndex = 4;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // textBox2
             // 
@@ -103,6 +108,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(70, 23);
             textBox2.TabIndex = 5;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // textBox3
             // 
@@ -110,6 +116,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(162, 23);
             textBox3.TabIndex = 6;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // textBox4
             // 
@@ -117,6 +124,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(162, 23);
             textBox4.TabIndex = 7;
+            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // textBox5
             // 
@@ -124,6 +132,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(162, 23);
             textBox5.TabIndex = 8;
+            textBox5.TextChanged += textBox5_TextChanged;
             // 
             // textBox6
             // 
@@ -131,6 +140,7 @@
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(70, 23);
             textBox6.TabIndex = 9;
+            textBox6.TextChanged += textBox6_TextChanged;
             // 
             // textBox7
             // 
@@ -138,15 +148,17 @@
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(162, 23);
             textBox7.TabIndex = 10;
+            textBox7.TextChanged += textBox7_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(79, 313);
+            label3.Location = new Point(56, 313);
             label3.Name = "label3";
             label3.Size = new Size(67, 15);
             label3.TabIndex = 11;
             label3.Text = "Machine ID";
+            label3.Click += label3_Click;
             // 
             // label4
             // 
@@ -201,6 +213,7 @@
             button1.TabIndex = 17;
             button1.Text = "Save";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -210,6 +223,7 @@
             button2.TabIndex = 18;
             button2.Text = "Cancel";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // Form2
             // 
@@ -237,6 +251,7 @@
             Controls.Add(inHouseRadio);
             Name = "Form2";
             Text = "Add Part";
+            Load += form2_Load;
             ResumeLayout(false);
             PerformLayout();
         }

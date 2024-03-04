@@ -80,6 +80,7 @@ namespace SquicqueroInventory
                         prod.InStock = thing.InStock;
                         prod.Min = thing.Min;
                         prod.Max = thing.Max;
+                        prod.AssociatedParts = thing.AssociatedParts;
                         return;
 
                     }

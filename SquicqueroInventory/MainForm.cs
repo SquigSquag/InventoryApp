@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Security.Cryptography.X509Certificates;
 
 namespace SquicqueroInventory
@@ -20,6 +21,7 @@ namespace SquicqueroInventory
         public static string form_value6 = "";
         public static string form_value7 = "";
         public static string form_Part = "";
+        public static BindingList<Part> form_partlist = new BindingList<Part>();
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -82,11 +84,28 @@ namespace SquicqueroInventory
             Form4 f4 = new Form4();
             f4.Show();
         }
-
+        //modify
         private void button3_Click(object sender, EventArgs e)
         {
-            Form5 f5 = new Form5();
-            f5.Show();
+            try{
+                Product tempprodmod = (Product)PROD_GRID_VIEW.CurrentRow.DataBoundItem;
+                form_value1 = tempprodmod.ProductID.ToString();
+                form_value2 = tempprodmod.Name.ToString();
+                form_value3 = tempprodmod.InStock.ToString();
+                form_value4 = tempprodmod.Price.ToString();
+                form_value5 = tempprodmod.Max.ToString();
+                form_value6 = tempprodmod.Min.ToString();
+                form_partlist = tempprodmod.AssociatedParts;
+
+                Form5 f5 = new Form5();
+                f5.Show();
+
+            }
+            catch
+            {
+                MessageBox.Show("Product not selected, please select a product.");
+
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)

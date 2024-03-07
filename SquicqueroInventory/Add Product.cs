@@ -9,6 +9,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SquicqueroInventory
 {
@@ -76,7 +77,7 @@ namespace SquicqueroInventory
             int tempmin;
             int tempmax;
 
-            
+
             try
             {
                 tempname = textBox5.Text;
@@ -90,7 +91,8 @@ namespace SquicqueroInventory
                     MessageBox.Show("Min cannot be larger than the current inventory. Please adjust.");
                     return;
                 }
-                else if (tempmax < tempinv) {
+                else if (tempmax < tempinv)
+                {
                     MessageBox.Show("Max cannot be smaller than the current inventory. Please adjust.");
                     return;
                 }
@@ -127,6 +129,54 @@ namespace SquicqueroInventory
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox1.Text.Length > 0)
+                {
+                    int tempimput = int.Parse(textBox1.Text);
+                    Part secpart = Inventory.lookupPart(tempimput);
+
+
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+
+                        Part temprow = (Part)row.DataBoundItem;
+                        if (temprow.PartID == secpart.PartID)
+                        {
+
+                            dataGridView1.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.Yellow;
+                            break;
+
+                        }
+                        else
+                        {
+                            dataGridView1.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.White;
+                        }
+
+
+                    }
+
+
+
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        Part temprow = (Part)row.DataBoundItem;
+                        dataGridView1.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.White;
+                        break;
+                    }
+                }
+            }
+            catch {
+                MessageBox.Show("Must be an integer");
+            }
 
         }
     }

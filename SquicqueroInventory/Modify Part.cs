@@ -43,7 +43,7 @@ namespace SquicqueroInventory
             if (sender == radioButton1)
             {
                 label3.Text = "Machine ID";
-                label3.Location = new Point(79, 313);
+                label3.Location = new Point(97, 408);
             }
         }
 
@@ -52,7 +52,7 @@ namespace SquicqueroInventory
             if (sender == radioButton2)
             {
                 label3.Text = "Company Name";
-                label3.Location = new Point(56, 313);
+                label3.Location = new Point(56, 408);
             }
         }
 

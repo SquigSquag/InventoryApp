@@ -22,7 +22,7 @@ namespace SquicqueroInventory
             textBox4.Text = MainForm.form_value4;
             textBox7.Text = MainForm.form_value5;
             textBox6.Text = MainForm.form_value6;
-          
+
             var TopPartList = new BindingSource();
             var BotPartList = new BindingSource();
             TopPartList.DataSource = Inventory.AllParts;
@@ -132,14 +132,112 @@ namespace SquicqueroInventory
         {
             if (dataGridView1.CurrentRow.DataBoundItem.GetType() == typeof(SquicqueroInventory.InHouse))
             {
-                InHouse tempPart = (InHouse)dataGridView2.CurrentRow.DataBoundItem;
+                InHouse tempPart = (InHouse)dataGridView1.CurrentRow.DataBoundItem;
                 ProdPartTemp.Remove(tempPart);
             }
             else
             {
-                Outsourced tempPart = (Outsourced)dataGridView2.CurrentRow.DataBoundItem;
+                Outsourced tempPart = (Outsourced)dataGridView1.CurrentRow.DataBoundItem;
                 ProdPartTemp.Remove(tempPart);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox1.Text.Length > 0)
+                {
+
+                    int tempimput = int.Parse(textBox1.Text);
+                    Part temppart = Inventory.lookupPart(tempimput);
+
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+
+                        Part temprow = (Part)row.DataBoundItem;
+                        if (temprow.PartID == temppart.PartID)
+                        {
+
+                            dataGridView1.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.Yellow;
+                            
+
+                        }
+                        else
+                        {
+                            dataGridView1.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.White;
+                        }
+
+
+                    }
+
+
+
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        Part temprow = (Part)row.DataBoundItem;
+                        dataGridView1.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.White;
+                        
+                    }
+                }
+            }
+            catch {
+                MessageBox.Show("Must be an integer");
+            };
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox8.Text.Length > 0)
+                {
+                    int tempprodid = MainForm.form_int;
+                    int tempimput = int.Parse(textBox8.Text);
+                    Product temppart = Inventory.lookupProduct(tempprodid);
+                    Part secpart = temppart.lookupAssociatedPart(tempimput);
+
+
+                    foreach (DataGridViewRow row in dataGridView2.Rows)
+                    {
+
+                        Part temprow = (Part)row.DataBoundItem;
+                        if (temprow.PartID == secpart.PartID)
+                        {
+
+                            dataGridView2.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.Yellow;
+
+                        }
+                        else
+                        {
+                            dataGridView2.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.White;
+                        }
+
+
+                    }
+
+
+
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in dataGridView2.Rows)
+                    {
+                        Part temprow = (Part)row.DataBoundItem;
+                        dataGridView2.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.White;
+                        
+                    }
+                }
+            }
+            catch {
+                MessageBox.Show("Must be an integer");
+                return;
+            }
+
 
         }
     }

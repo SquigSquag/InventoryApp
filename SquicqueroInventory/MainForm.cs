@@ -1,5 +1,7 @@
 using System.ComponentModel;
 using System.Security.Cryptography.X509Certificates;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SquicqueroInventory
 {
@@ -21,6 +23,7 @@ namespace SquicqueroInventory
         public static string form_value6 = "";
         public static string form_value7 = "";
         public static string form_Part = "";
+        public static int form_int = 0;
         public static BindingList<Part> form_partlist = new BindingList<Part>();
 
 
@@ -51,6 +54,51 @@ namespace SquicqueroInventory
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (textBox1.Text.Length > 0)
+                {
+                    
+                    int tempimput = int.Parse(textBox1.Text);
+                    Product tempprod = Inventory.lookupProduct(tempimput);
+
+
+                    foreach (DataGridViewRow row in PROD_GRID_VIEW.Rows)
+                    {
+
+                        Product temprow = (Product)row.DataBoundItem;
+                        if (temprow.ProductID == tempprod.ProductID)
+                        {
+
+                            PROD_GRID_VIEW.Rows[temprow.ProductID - 1].DefaultCellStyle.BackColor = Color.Yellow;
+                            break;
+
+                        }
+                        else
+                        {
+                            PROD_GRID_VIEW.Rows[temprow.ProductID - 1].DefaultCellStyle.BackColor = Color.White;
+                        }
+
+
+                    }
+
+
+
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in PROD_GRID_VIEW.Rows)
+                    {
+                        Product temprow = (Product)row.DataBoundItem;
+                        PROD_GRID_VIEW.Rows[temprow.ProductID - 1].DefaultCellStyle.BackColor = Color.White;
+                        break;
+                    }
+                }
+            }
+            catch {
+                MessageBox.Show("Search must be an integer");
+                return;
+            }
 
         }
 
@@ -87,7 +135,8 @@ namespace SquicqueroInventory
         //modify
         private void button3_Click(object sender, EventArgs e)
         {
-            try{
+            try
+            {
                 Product tempprodmod = (Product)PROD_GRID_VIEW.CurrentRow.DataBoundItem;
                 form_value1 = tempprodmod.ProductID.ToString();
                 form_value2 = tempprodmod.Name.ToString();
@@ -96,7 +145,7 @@ namespace SquicqueroInventory
                 form_value5 = tempprodmod.Max.ToString();
                 form_value6 = tempprodmod.Min.ToString();
                 form_partlist = tempprodmod.AssociatedParts;
-
+                form_int = tempprodmod.ProductID;
                 Form5 f5 = new Form5();
                 f5.Show();
 
@@ -169,14 +218,64 @@ namespace SquicqueroInventory
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (PART_GRID_VIEW.CurrentRow.DataBoundItem.GetType() == typeof(SquicqueroInventory.InHouse)){
+            if (PART_GRID_VIEW.CurrentRow.DataBoundItem.GetType() == typeof(SquicqueroInventory.InHouse))
+            {
                 InHouse deletehouse = (InHouse)PART_GRID_VIEW.CurrentRow.DataBoundItem;
                 Inventory.removePart(deletehouse.PartID);
             }
-            else {
+            else
+            {
                 Outsourced deletesource = (Outsourced)PART_GRID_VIEW.CurrentRow.DataBoundItem;
                 Inventory.removePart(deletesource.PartID);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox2.Text.Length > 0)
+                {
+                    int tempimput = int.Parse(textBox2.Text);
+
+
+
+                    foreach (DataGridViewRow row in PART_GRID_VIEW.Rows)
+                    {
+
+                        Part temprow = (Part)row.DataBoundItem;
+                        if (temprow.PartID == tempimput)
+                        {
+                            PART_GRID_VIEW.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.Yellow;
+                            break;
+
+                        }
+                        else
+                        {
+                            PART_GRID_VIEW.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.White;
+                        }
+
+
+                    }
+
+
+
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in PART_GRID_VIEW.Rows)
+                    {
+                        Part temprow = (Part)row.DataBoundItem;
+                        PART_GRID_VIEW.Rows[temprow.PartID - 1].DefaultCellStyle.BackColor = Color.White;
+                        break;
+                    }
+                }
+            }
+            catch {
+                MessageBox.Show("Search must be an integer");
+                return;
+            }
+
         }
     }
 }

@@ -56,7 +56,7 @@ namespace SquicqueroInventory
             if (sender == inHouseRadio)
             {
                 label3.Text = "Machine ID";
-                label3.Location = new Point(79, 313);
+                label3.Location = new Point(64, 417);
             }
         }
 
@@ -65,7 +65,7 @@ namespace SquicqueroInventory
             if (sender == outsourcedRadio)
             {
                 label3.Text = "Company Name";
-                label3.Location = new Point(56, 313);
+                label3.Location = new Point(56, 417);
             }
         }
 
@@ -97,6 +97,8 @@ namespace SquicqueroInventory
                     MessageBox.Show("Min must be less than the current inventory. Please adjust and try again.");
                     return;
                 }
+                
+
             }
             catch
             {
@@ -104,10 +106,18 @@ namespace SquicqueroInventory
                 return;
             }
             if (inHouseRadio.Checked) {
-                randPart = int.Parse(textBox7.Text);
-                InHouse tempInHouse = new InHouse((Inventory.AllParts.Count+1), nametemp, pricePart, invPart, minPart, maxPart, randPart);
-                Inventory.addPart(tempInHouse);
-                this.Close();
+                var temphold = textBox7.Text;
+                if (int.TryParse(textBox7.Text, out int num))
+                {
+                    randPart = int.Parse(textBox7.Text);
+                    InHouse tempInHouse = new InHouse((Inventory.AllParts.Count + 1), nametemp, pricePart, invPart, minPart, maxPart, randPart);
+                    Inventory.addPart(tempInHouse);
+                    this.Close();
+                }
+                else {
+                    MessageBox.Show("InHouse Part Number cannot be blank or contain letters or special characters!");
+                    return;
+                }
             }
             if (outsourcedRadio.Checked) {
                 Outsourced tempOutSourced = new Outsourced((Inventory.AllParts.Count + 1), nametemp, pricePart, invPart, minPart, maxPart, textBox7.Text);

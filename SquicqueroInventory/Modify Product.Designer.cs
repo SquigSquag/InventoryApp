@@ -267,6 +267,7 @@
             button1.TabIndex = 25;
             button1.Text = "Search";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 
@@ -286,6 +287,7 @@
             button6.TabIndex = 47;
             button6.Text = "Search";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // textBox8
             // 
